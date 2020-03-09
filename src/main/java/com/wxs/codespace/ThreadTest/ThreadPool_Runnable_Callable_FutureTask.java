@@ -2,7 +2,7 @@ package com.wxs.codespace.ThreadTest;
 
 import java.util.concurrent.*;
 
-public class ThreadPoolTest {
+public class ThreadPool_Runnable_Callable_FutureTask {
     public static void main(String args[]){
         try {
             fixedThreadPoolTest();
@@ -21,7 +21,7 @@ public class ThreadPoolTest {
      * 测试一和测试二无法获取到线程的返回结果，其余的可以获取(get)到返回结果。并且get时，若线程未计算完成，则阻塞，直到拿到结果。
      */
     private static void fixedThreadPoolTest() throws ExecutionException, InterruptedException {
-        ExecutorService es = Executors.newFixedThreadPool(5);
+        ExecutorService es = Executors.newFixedThreadPool(2);
 
         //测试一
         es.submit(new PrintRunnable());
@@ -32,15 +32,18 @@ public class ThreadPoolTest {
         //测试三
         Future<Integer> res1 = es.submit(new PrintCallable());
         System.out.println("PrintCallable res:" + res1.get());
+        System.out.println("阻塞解除");
 
         //测试四
         Future<Integer> res2 = es.submit(() -> new PrintCallable().call());
         System.out.println("PrintCallable res:" + res2.get());
+        System.out.println("阻塞解除");
 
         //测试五
         FutureTask<Integer> futureTask = new FutureTask<>(new PrintCallable());
         es.submit(futureTask);
-        System.out.println("PrintCallable res:" + futureTask.get());
+        System.out.println("拿到结果:" + futureTask.get());
+        System.out.println("阻塞解除");
         es.shutdown();
     }
 
@@ -62,7 +65,7 @@ public class ThreadPoolTest {
     }
 
     /**
-     * 统一Callable: 输出1123
+     * 统一Callable: 返回1123
      */
     private static class PrintCallable implements Callable<Integer> {
 
