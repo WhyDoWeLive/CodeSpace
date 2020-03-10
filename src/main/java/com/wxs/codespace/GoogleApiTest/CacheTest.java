@@ -14,7 +14,7 @@ public class CacheTest {
         Cache<String, String> localCache = CacheBuilder.newBuilder().build();
         String value = localCache.getIfPresent("key_test1");
         if (value == null){
-            System.out.println("there is nothing in cache");
+            System.out.println("进程启动，内存里啥也没有");
             localCache.put("key_test1", "value_test1");
             System.out.println("put to cache : " + localCache.getIfPresent("key_test1"));
             System.out.println("waiting 5 second..... get from cache");
