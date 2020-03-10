@@ -1,4 +1,4 @@
-package com.wxs.codespace.RPCImplTest.Provider;
+package com.wxs.codespace.RPCTest.SimpleRPCImpl.Provider;
 
 public class CalculatorImpl implements Calculator{
     @Override

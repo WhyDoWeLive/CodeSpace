@@ -1,7 +1,7 @@
-package com.wxs.codespace.RPCImplTest.Consumer;
+package com.wxs.codespace.RPCTest.SimpleRPCImpl.Consumer;
 
-import com.wxs.codespace.RPCImplTest.Provider.Calculator;
-import com.wxs.codespace.RPCImplTest.Request.CalculateRpcRequest;
+import com.wxs.codespace.RPCTest.SimpleRPCImpl.Provider.Calculator;
+import com.wxs.codespace.RPCTest.SimpleRPCImpl.Request.CalculateRpcRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

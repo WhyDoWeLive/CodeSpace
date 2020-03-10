@@ -1,4 +1,4 @@
-package com.wxs.codespace.RPCImplTest.Request;
+package com.wxs.codespace.RPCTest.SimpleRPCImpl.Request;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
