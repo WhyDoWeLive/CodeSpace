@@ -3,7 +3,7 @@ package com.wxs.codespace.ThreadTest;
 /**
  * 关注点1：两个线程将 static 的 sum 不断的加1后，sum变量的最终取值
  * 关注点2：两个线程将 static 的 threadLocal1 不断加1后，变量在两个线程中的取值
- * 关注点3：每个线程都用了两个threadLocal共存了2个值
+ * 关注点3：每个线程都用了两个threadLocal存了2个值
  */
 public class ThreadLocalTest{
     private static ThreadLocal<Integer> threadLocal_1 = new ThreadLocal<Integer>(){

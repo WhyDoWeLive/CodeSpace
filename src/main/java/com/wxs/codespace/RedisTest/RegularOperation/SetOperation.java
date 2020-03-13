@@ -1,20 +1,16 @@
-package com.wxs.codespace;
+package com.wxs.codespace.RedisTest.RegularOperation;
 
-import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.redis.core.StringRedisTemplate;
+import org.springframework.stereotype.Component;
 
-@SpringBootTest
-class CodespaceApplicationTests {
-
+@Component
+public class SetOperation {
     @Autowired
-    StringRedisTemplate stringRedisTemplate;
+    private static StringRedisTemplate stringRedisTemplate;
 
-    @Test
-    void contextLoads() {
+    public static void main(String[] args){
         stringRedisTemplate.opsForValue().set("test-string-value", "first-test-by-stringRedisTemplate");
         System.out.println(stringRedisTemplate.opsForValue().get("test-string-value"));
     }
-
 }
