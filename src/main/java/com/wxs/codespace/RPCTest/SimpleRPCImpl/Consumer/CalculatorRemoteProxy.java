@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 创建远程对象的代理对象并实现对应的方法，这里我们是自己创建的代理对象。
+ * 创建远程对象的代理对象并实现对应的方法，创建的代理对这里我们是自己象。
  * Dubbo会通过扫描带有@Reference的bean，为其创建代理对象并注入到需要的地方
  */
 public class CalculatorRemoteProxy implements Calculator {

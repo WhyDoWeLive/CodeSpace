@@ -1,6 +1,19 @@
 package com.wxs.codespace.ThreadTest;
 
+import com.wxs.codespace.MyInterceptor;
+
 public class SynchronizedTest {
+    static String name = "wxs";
+    static {
+        System.out.println(name);
+        MyInterceptor myInterceptor = new MyInterceptor();
+    }
+
+    public static void fuzhi(){
+        System.out.println("heh");
+        name = "xn";
+    }
+
     private int lock = 0;
     public static void main(String[] args){
         new Thread(new RunImpl()).start();
@@ -30,7 +43,7 @@ public class SynchronizedTest {
 
 
         /**
-         * synchronized+普通string对象，为什么不会同时执行，而线程间会有影响呢？
+         * ？？？synchronized+普通string对象，为什么不会同时执行，而线程间会有影响呢？
          */
         public synchronized void print2() throws InterruptedException {
             String lock = "";
