@@ -10,7 +10,7 @@ import java.util.concurrent.TimeUnit;
 
 public class CacheTest {
     public static void main(String[] args) throws ExecutionException, InterruptedException {
-        test7();
+        test6();
     }
 
     //Google的cache占用的是进程的内存
