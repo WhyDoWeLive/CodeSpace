@@ -13,37 +13,39 @@ import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
 
 /**
  * 将这个配置类全部注释掉，也可以正常运行，也许是有默认的序列化、连接池等配置吧
+ * Configuration中声明Bean的好处？可以定制Bean？
  */
 
 @Configuration
 public class RedisConfig {
+//    @Bean
+//    @ConditionalOnMissingBean(name = "redisTemplate")
+//    public RedisTemplate<String, Object> redisTemplate(
+//            RedisConnectionFactory redisConnectionFactory) {
+//
+//        Jackson2JsonRedisSerializer<Object> jackson2JsonRedisSerializer = new Jackson2JsonRedisSerializer<Object>(Object.class);
+//        ObjectMapper om = new ObjectMapper();
+//        om.setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.ANY);
+//        om.enableDefaultTyping(ObjectMapper.DefaultTyping.NON_FINAL);
+//        jackson2JsonRedisSerializer.setObjectMapper(om);
+//
+//        RedisTemplate<String, Object> template = new RedisTemplate<String, Object>();
+//        template.setConnectionFactory(redisConnectionFactory);
+//        template.setKeySerializer(jackson2JsonRedisSerializer);
+//        template.setValueSerializer(jackson2JsonRedisSerializer);
+//        template.setHashKeySerializer(jackson2JsonRedisSerializer);
+//        template.setHashValueSerializer(jackson2JsonRedisSerializer);
+//        template.afterPropertiesSet();
+//        return template;
+//    }
+
     @Bean
-    @ConditionalOnMissingBean(name = "redisTemplate")
-    public RedisTemplate<String, Object> redisTemplate(
-            RedisConnectionFactory redisConnectionFactory) {
-
-        Jackson2JsonRedisSerializer<Object> jackson2JsonRedisSerializer = new Jackson2JsonRedisSerializer<Object>(Object.class);
-        ObjectMapper om = new ObjectMapper();
-        om.setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.ANY);
-        om.enableDefaultTyping(ObjectMapper.DefaultTyping.NON_FINAL);
-        jackson2JsonRedisSerializer.setObjectMapper(om);
-
-        RedisTemplate<String, Object> template = new RedisTemplate<String, Object>();
-        template.setConnectionFactory(redisConnectionFactory);
-        template.setKeySerializer(jackson2JsonRedisSerializer);
-        template.setValueSerializer(jackson2JsonRedisSerializer);
-        template.setHashKeySerializer(jackson2JsonRedisSerializer);
-        template.setHashValueSerializer(jackson2JsonRedisSerializer);
-        template.afterPropertiesSet();
-        return template;
-    }
-
-    @Bean
-    @ConditionalOnMissingBean(StringRedisTemplate.class)
+//    @ConditionalOnMissingBean(StringRedisTemplate.class)
     public StringRedisTemplate stringRedisTemplate(
             RedisConnectionFactory redisConnectionFactory) {
         StringRedisTemplate template = new StringRedisTemplate();
         template.setConnectionFactory(redisConnectionFactory);
+        System.out.println("===========create by config");
         return template;
     }
 }

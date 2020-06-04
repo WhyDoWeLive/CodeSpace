@@ -15,7 +15,7 @@ import java.io.IOException;
  *
  * 注册过滤器方式二：通过配置类和FilterRegistrationBean，相见文件FilterConfig。此时可先将注册方式一的动作注释掉
  */
-@WebFilter(urlPatterns = "/*")
+@WebFilter(urlPatterns = "/filter")
 @Slf4j
 public class MyFilter implements Filter {
 

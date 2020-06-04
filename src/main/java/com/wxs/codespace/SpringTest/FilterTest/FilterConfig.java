@@ -13,7 +13,7 @@ public class FilterConfig {
     public FilterRegistrationBean registFilter(){
         FilterRegistrationBean registrationBean = new FilterRegistrationBean();
         registrationBean.setFilter(new MyFilter());
-        registrationBean.addUrlPatterns("/*");
+        registrationBean.addUrlPatterns("/filter");
         //通过@WebFilter方式注册Filter不能指定优先级，通常@WebFilter注册的Filter按照类名的倒序排序，并且都高于通过FilterRegistrationBean注册的Filter
         registrationBean.setOrder(2);
         return registrationBean;

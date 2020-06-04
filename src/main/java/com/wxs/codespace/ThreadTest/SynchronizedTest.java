@@ -1,12 +1,9 @@
 package com.wxs.codespace.ThreadTest;
 
-import com.wxs.codespace.MyInterceptor;
-
 public class SynchronizedTest {
     static String name = "wxs";
     static {
         System.out.println(name);
-        MyInterceptor myInterceptor = new MyInterceptor();
     }
 
     public static void fuzhi(){

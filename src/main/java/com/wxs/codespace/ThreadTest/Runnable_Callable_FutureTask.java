@@ -2,7 +2,7 @@ package com.wxs.codespace.ThreadTest;
 
 import java.util.concurrent.*;
 
-public class ThreadPool_Runnable_Callable_FutureTask {
+public class Runnable_Callable_FutureTask {
     public static void main(String args[]){
         try {
             fixedThreadPoolTest();
