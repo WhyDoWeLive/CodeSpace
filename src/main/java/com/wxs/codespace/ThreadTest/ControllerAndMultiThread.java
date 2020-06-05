@@ -1,9 +1,7 @@
 package com.wxs.codespace.ThreadTest;
 
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * 这样是有问题的：所有tomcat为用户开启的10个线程共享i的值
@@ -27,13 +25,16 @@ import org.springframework.web.bind.annotation.RestController;
 public class ControllerAndMultiThread {
     ThreadLocal<Integer> threadLocal = ThreadLocal.withInitial(() -> 0);
 
-    @RequestMapping("testMultiThreadWithController")
-    public String testMultiThreadWithController(@RequestBody String arg1){
+    @Value("${spring.redis.port}")
+    private String port;
+    @GetMapping({"testMultiThreadWithController", "anotherPath"})
+    public String testMultiThreadWithController(String arg1){
         System.out.println(arg1);
         System.out.println(Thread.currentThread().getName());
         threadLocal.set(threadLocal.get()+1);
         String i = String.valueOf(threadLocal.get());
         threadLocal.remove();
+        System.out.println("==========" + port);
         return i;
     }
 }
