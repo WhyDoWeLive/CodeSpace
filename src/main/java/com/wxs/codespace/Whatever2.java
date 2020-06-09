@@ -21,7 +21,7 @@ public class Whatever2{
     }
 
     /**
-     *
+     * Jsoup
      * @throws IOException
      */
     public static void getHtmlByJsoup(String url) throws IOException {
