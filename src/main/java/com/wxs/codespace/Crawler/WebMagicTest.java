@@ -25,8 +25,7 @@ public class WebMagicTest implements PageProcessor {
         // 部分三：从页面发现后续的url地址来抓取
 //        page.addTargetRequests(page.getHtml().links().regex("(https://github\\.com/[\\w\\-]+/[\\w\\-]+)").all());
 
-        System.out.println("=====================");
-        System.out.println(page.getHtml());
+        System.out.println(page.getJson());
     }
 
     @Override
@@ -38,7 +37,7 @@ public class WebMagicTest implements PageProcessor {
 
         Spider.create(new WebMagicTest())
                 //从"https://github.com/code4craft"开始抓
-                .addUrl("https://www.toutiao.com/ugc/share/wap/thread/1669147698721792")
+                .addUrl("http://m.toutiao.com/i6837304752057876995/info/")
                 //开启5个线程抓取
                 .thread(5)
                 //启动爬虫

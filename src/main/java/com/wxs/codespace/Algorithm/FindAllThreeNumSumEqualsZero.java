@@ -39,15 +39,15 @@ public class FindAllThreeNumSumEqualsZero {
     }
 
     public static void main(String[] args){
-        int[] nums = {-1, 0, 1, 2, -1, -4};
-        Arrays.sort(nums);
-        FindAllThreeNumSumEqualsZero f = new FindAllThreeNumSumEqualsZero();
-        for (int i = 0;i < nums.length; ++i){
-            f.findTwoNumThatSumEqualsIOfArr(nums, i);
-        }
-
-        for (List<Integer> list : result){
-            System.out.println(list);
-        }
+//        int[] nums = {-1, 0, 1, 2, -1, -4};
+//        Arrays.sort(nums);
+//        FindAllThreeNumSumEqualsZero f = new FindAllThreeNumSumEqualsZero();
+//        for (int i = 0;i < nums.length; ++i){
+//            f.findTwoNumThatSumEqualsIOfArr(nums, i);
+//        }
+//
+//        for (List<Integer> list : result){
+//            System.out.println(list);
+//        }
     }
 }

@@ -4,6 +4,7 @@ import com.gargoylesoftware.htmlunit.BrowserVersion;
 import com.gargoylesoftware.htmlunit.WebClient;
 import com.gargoylesoftware.htmlunit.html.HtmlPage;
 import com.google.common.collect.Lists;
+import lombok.extern.slf4j.Slf4j;
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -12,15 +13,18 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 import static org.jsoup.helper.HttpConnection.DEFAULT_UA;
 
+@Slf4j
 public class Crawler {
     public static final List<String> l = Lists.newArrayList();
     public static void main(String[] args) throws IOException, ClassNotFoundException {
 //        getHtmlByJsoup("https://m.weibo.cn/status/4486849584666868?luicode=10000493&lfid=xiaomi_fuyiping_shoucang_h5_170823");
-        getHtmlByJsoup("https://www.toutiao.com/ugc/share/wap/thread/1669147698721792");
+        getHtmlByJsoup("http://m.toutiao.com/i6837304752057876995/info/");
     }
 
     /**
@@ -50,11 +54,17 @@ public class Crawler {
 
         Connection connection = Jsoup.connect(url)
 //                .userAgent("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.98 Safari/537.36") //PC
-//                .userAgent("Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1") //mobile
-                .userAgent(String.valueOf(System.currentTimeMillis()))
-                .timeout(10000);
-        Document document = connection.get();
-        System.out.println(document);
+                .userAgent("Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1") //mobile
+//                .userAgent(String.valueOf(System.currentTimeMillis()))
+                .timeout(10000)
+                .followRedirects(true)
+                .ignoreContentType(true)
+                .cookie("tt_webid", "123")  ;
+
+        Connection.Response response = connection.execute();
+        System.out.println(Optional.ofNullable(null).orElse("default"));
+
+//        System.out.println(response.statusCode());
 //        Connection.Response response = connection.execute();
 //        System.out.println(response.statusCode());
 //        System.out.println(response.body());
