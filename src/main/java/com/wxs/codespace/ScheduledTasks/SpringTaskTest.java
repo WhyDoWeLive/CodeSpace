@@ -17,6 +17,8 @@ import java.util.concurrent.TimeUnit;
  * 配置成多线程的方式（配置类已经写好，直接放开@Async的注释就好了）：
  * 1、首先创建AsyncConfig配置类配置多线程（网上有很多通过在xml中添加<task>来做的），详见该文件
  * 2、在定时任务的类或者方法上加上@Async，则相应任务都跑在不同线程
+ *
+ * cron表达式，空格分割，依次为秒、分、时、天、月、星期、年，每个元素的值可以是一个值、连续区间(9-12)、间隔时间(如每隔4：* // 4 )、列表(1,3,5)
  */
 //@Async
 public class SpringTaskTest {
